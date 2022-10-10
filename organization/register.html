@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="/public/organization/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div>
+    <div class="header">One-Queue</div>
+    <div class="container">
+      <div class="title">Registration</div>
+      <div class="content">
+        <form id="f1" method="POST" enctype="multipart/form-data">
+          <div class="user-details">
+            <div class="input-box">
+              <span class="details">Organization Name</span>
+              <input type="text" name="name" placeholder="Enter organization name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Select District</span>
+              <select name="district"  required>
+                <option value="" >Select a district</option>
+                <option value="Ajmer">Ajmer</option>
+                <option value="Alwar">Alwar</option>
+                <option value="Banswara">Banswara</option>
+                <option value="Baran">Baran</option>
+                <option value="Barmer">Barmer</option>
+                <option value="Bharatpur">Bharatpur</option>
+                <option value="Bhilwara">Bhilwara</option>
+                <option value="Bikaner">Bikaner</option>
+                <option value="Bundi">Bundi</option>
+                <option value="Chittorgarh">Chittorgarh</option>
+                <option value="Churu">Churu</option>
+                <option value="Dausa">Dausa</option>
+                <option value="Dholpur">Dholpur</option>
+                <option value="Dungarpur">Dungarpur</option>
+                <option value="Hanumangarh">Hanumangarh</option>
+                <option value="Jaipur">Jaipur</option>
+                <option value="Jaisalmer">Jaisalmer</option>
+                <option value="Jalore">Jalore</option>
+                <option value="Jhalawar">Jhalawar</option>
+                <option value="Jhunjhunu">Jhunjhunu</option>
+                <option value="Jodhpur">Jodhpur</option>
+                <option value="Karauli">Karauli</option>
+                <option value="Kota">Kota</option>
+                <option value="Nagaur">Nagaur</option>
+                <option value="Pali">Pali</option>
+                <option value="Pratapgarh">Pratapgarh</option>
+                <option value="Rajsamand">Rajsamand</option>
+                <option value="Sawai Madhopur">Sawai Madhopur</option>
+                <option value="Sikar">Sikar</option>
+                <option value="Sirohi">Sirohi</option>
+                <option value="Tonk">Tonk</option>
+                <option value="Udaipur">Udaipur</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <span class="details">Select type</span>
+              <select name="district"  required>
+                <option value="" >Select the type</option>
+                <option value="Banks">Banks</option>
+                <option value="Clinics">Clinics</option>
+                <option value="Government Offices">Government Offices</option>
+                <option value="Medical Stores">Medical Stores </option>
+                <option value="Amenities">Amenities</option>
+                <option value="Bus Stands">Bus Stands</option>
+                <option value="Ration Provider">Ration Provider</option>
+                <option value="Collector Office">Collector Office</option>
+                <option value="Hospitals">Hospitals</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" name="phone" placeholder="Enter your number" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Enter Address</span>
+              <input type="text" name="address" placeholder="Enter address" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Enter Description</span>
+              <input type="text" name="description" placeholder="Enter description here" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Upload Logo</span>
+              <input type="file" accept="image/*" />
+            </div>
+            <div class="input-box">
+              <span class="details">Password</span>
+              <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Confirm Password</span>
+              <input type="text" placeholder="Confirm your password" required>
+            </div>
+          </div>
+          <!-- <div class="gender-details">
+            <input type="radio" name="gender" id="dot-1">
+            <input type="radio" name="gender" id="dot-2">
+            <input type="radio" name="gender" id="dot-3">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+                <span class="dot one"></span>
+                <span class="gender">Male</span>
+              </label>
+              <label for="dot-2">
+                <span class="dot two"></span>
+                <span class="gender">Female</span>
+              </label>
+              <label for="dot-3">
+                <span class="dot three"></span>
+                <span class="gender">Prefer not to say</span>
+              </label>
+            </div>
+          </div> -->
+          <div class="button">
+            <input type="submit" value="Register">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="footer">
+      One-Queue. All rights reserved for Smart India Hackathon<br>
+      Team Optimizers@
+    </div>
+  </div>
+  <script>
+      var form = document.getElementById('f1');
+      form.onsubmit = function(e) {
+          e.preventDefault();
+          var formData = new FormData(form);
+          var xhr = new XMLHttpRequest();
+          xhr.open('POST', 'http://localhost:8080/api/_v1/register/organization/', true);
+          xhr.onload = function() {
+              if (this.status == 200) {
+                  console.log(this.responseText);
+                  if (this.responseText == "success") {
+                      window.location.href = "http://localhost:8080/organization/verify";
+                  } else {
+                      alert(this.responseText);
+                  }
+              }
+          }
+          xhr.send(formData);
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <link rel="stylesheet" href="/public/organization/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js" integrity="sha512-9mpsATI0KClwt+xVZfbcf2lJ8IFBAwsubJ6mI3rtULwyM3fBmQFzj0It4tGqxLOGQwGfJdk/G+fANnxfq9/cew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <div>
+    <div class="header">One-Queue</div>
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="4">Organization: </th>
+                        <td colspan="3 ">Main Bus Stand Kota</td>
+                        <td><button class=""></button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Service Name: </td>
+                        <td colspan="3">Reservation Service</td>
+                    </tr>
+                    <tr>
+                        <th>S No</th>
+                        <th>Counter Number</th>
+                        <th>Counter Name</th>
+                        <th>Counter Admin</th>
+                        <th>Counter Status</th>
+                        <th>Current Tokens</th>
+                        <th>Enter into token</th>
+                    </tr>
+                </thead>
+                <tbody id="counter">
+                    
+                </tbody>
+            </table>
+        </div>
+    <div class="footer">
+      One-Queue. All rights reserved for Smart India Hackathon<br>
+      Team Optimizers@
+    </div>
+  </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        socket.on('queue', function(data){
+            console.log(data);
+            $('#counter').insertRow(0).insertCell(0).innerHTML = data.sno;
+        });
+    </script>
+
+</body>
+</html>
